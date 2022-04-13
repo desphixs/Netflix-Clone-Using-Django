@@ -1,0 +1,43 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix</title>
+    <link rel="stylesheet" href="{% static 'assets/style.css' %}">
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+</head>
+<body class="bg-black text-gray-100">
+    <nav class="flex justify-between items-center py-3 px-4 fixed w-full z-50">
+        <div class="w-6/12">
+            <img src="{% static 'assets/netflix.png' %}" alt="logo" class="w-5/12 md:w-2/12">
+        </div>
+
+        <div>
+            {% if request.user.is_authenticated %}
+            <a href="{% url 'account_logout' %}" class='bg-primary_red py-1 px-3 text-white md:text-lg rounded-md'>
+                Logout
+            </a>
+            {% else %}
+            <a href="{% url 'account_login' %}" class='bg-primary_red py-1 px-3 text-white md:text-lg rounded-md'>
+                Sign In 
+            </a>
+            {% endif %}
+        </div>
+    </nav>
+    {% block content %}
+
+    {% endblock content %}
+    <!-- <footer class=" px-5 py-10 ">
+        <ul class="flex justify-between items-center">
+            
+            <li>&copy; All Right Reserved | 2022</li>
+            <li> Netflix Clone</li>
+            <li>By: Destiny Franks - Desphixs</li>
+        </ul>
+    </footer> -->
+</body>
+</html>

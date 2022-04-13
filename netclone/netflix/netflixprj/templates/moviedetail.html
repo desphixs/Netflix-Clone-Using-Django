@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <main class='bg-primary_black min-h-screen w-full'>
+        <section class="h-screen relative bg-no-repeat pb-8 pl-6 flex justify-end items-end bg-cover" style="background-image: url('{{ movie.image.url }}');">
+            <div>
+                <h2 class="text-6xl font-semibold text-white my-4" style="font-weight: bolder;">
+                    {{ movie.title }}
+                </h2>
+                <p class=" w-11/12 md:w-5/12 font-medium text-white my-4">
+                    {{movie.description}}
+                </p>
+                <div class="flex my-4">
+
+                    <a href="{% url 'netflixapp:play-movie' movie_id=movie.uuid %}" class="flex items-center bg-red py-2 px-5 rounded-md">
+                        <ion-icon name="play" class="text-2xl"></ion-icon>
+                        <span class="ml-3 font-medium">
+                            Play
+                        </span>
+                    </a>
+    
+                    
+                </div>
+            </div>
+        </section> 
+        <section class='bg-primary_black  min-h-screen flex justify-center py-10'>
+            <div class="p-8 w-10/12 relative" >
+                <h2 class="text-gray-200 text-3xl font-medium">
+                    Description
+                </h2>
+                <div class="flex justify-center  items-center min-w-full  movie_lis">
+                    <p class="text-gray-100 text-lg">
+                        {{movie.description}}
+                    </p>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+    <script>
+        const nav = document.querySelector('nav')
+
+        document.addEventListener("scroll",e=>{
+            
+            if(scrollY>200){
+                nav.classList.add('bg-gray-900')
+          
+            }else{
+                nav.classList.remove('bg-gray-900')
+                
+            }
+        })
+
+    </script>
+
+{% endblock content %}

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <section class='bg-primary_black min-h-screen py-20 md:py-32 flex-col flex items-center' style="background-image: url('assets/background_netflix.jpg');">
+        <div class="flex flex-wrap justify-center  w-10/12  md:w-6/12">
+            <form class="w-full md:w-8/12 bg-gray-900 p-5 rounded-lg" method="POST">{% csrf_token %}
+                <h1 class="text-4xl text-center text-gray-100 font-medium">
+                    Create A Profile
+                </h1>
+                <div class="my-4"> 
+                    <Label class='text-lg text-gray-200 font-medium mb-3'>
+                        Profile Name
+                    </Label>
+                    <input required class="p-2 bg-gray-500 rounded-sm text-gray-200 outline-none block w-full" type="text" name="name" id="id_name" placeholder="Profile name">
+                </div>
+                <div class="my-4"> 
+                    <Label class='text-lg text-gray-200 font-medium mb-3'>
+                        Maturity Level
+                    </Label>
+                    <select class="p-2 bg-gray-500 rounded-sm text-gray-200 outline-none block w-full"  name="age_limit" id="id_age_limit" >
+                        <option value="All">All</option>
+                        <option value="Kids">Kids</option>
+                       
+                    </select>
+                </div>
+                <div class="flex justify-center items-center">
+                    <button class="px-4 py-2 rounded-md outline-none bg-primary_red text-gray-100" type="submit">Create Profile</button>
+                </div>
+            </form> 
+        </div>
+        
+    </section>
+    {% endblock content %}
